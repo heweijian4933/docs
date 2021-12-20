@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>this 的指向问题实例</title>
+</head>
+
+<body>
+    <div>
+        <h1>this 的指向问题实例,请打开 console</h1>
+
+    </div>
+    <script>
+
+        let person = {
+            fname: "花花",
+            lname: "汪",
+            quanming: function () {
+                console.log(this);
+                return this.lname + this.fname
+            },
+            fullname: () => {
+                console.log(this);
+                return this.lname + this.fname
+            }
+
+        }
+
+        console.log('普通 function', person.quanming()); //this 显示依然为父级调用对象 person
+
+        console.log('箭头函数', person.fullname()); //this指向 window 或者 'use strict';严格模式下undefined，无论是 window 或者 undefined 其实都是 this指向最外面的域
+
+        let father = {
+            class: "father uper",
+            person,
+        }
+
+        console.log("嵌套对象", father.person.quanming()) //this 显示依然为父级调用对象 person, 而不是 father
+
+        let get_fullname = person.quanming
+        console.log(get_fullname === person.quanming); //true
+        console.log("get_fullname()", get_fullname()); //window
+
+        /* this 的指向与 this 所在的位置没有直接关系 */
+        // 如果
+
+
+    </script>
+</body>
+
+</html>
