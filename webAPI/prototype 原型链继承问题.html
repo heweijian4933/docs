@@ -9,33 +9,53 @@
 
 <body>
     <script>
-        function Animal() {
+        /* https://biaoyansu.com/12.23 */
+        // 动物 》哺乳动物 》人类 》lsd
+        // https://segmentfault.com/a/1190000022776150
 
-        }
-        Animal.prototype.eat = () => {
-            console.log("i can eat");
-        }
-        Animal.prototype.sleep = () => {
-            console.log("i can sleep");
-        }
-
-        function Mamal() {
-
+        function Animal(color, weight) {
+            this.color = color;
+            this.weight = weight;
         }
 
-        Mamal.prototype.glowHair = () => {
-            console.log("i can glow hair");
+        Animal.prototype.eat = function () {
+            console.log('mia mia mia...');
         }
 
-        function Human() {
-
-        }
-        Human.prototype.speak = () => {
-            console.log("i can speak");
+        Animal.prototype.sleep = function () {
+            console.log('zzz...');
         }
 
-        let lsd = new Human()
-        console.log(lsd);
+        // var a = new Animal('black', 120);
+        // console.log('a:', a);
+
+        function Mammal(color, weight) {
+            Animal.call(this, color, weight);
+        }
+
+        Mammal.prototype = Object.create(Animal.prototype);
+        Mammal.prototype.constructor = Mammal;
+        Mammal.prototype.suckle = function () {
+            console.log('mia！好奶！');
+        }
+
+        // var m = new Mammal('black', 100);
+        // console.log('m:', m);
+
+        function Person(color, weight) {
+            Mammal.call(this, color, weight);
+        }
+
+        Person.prototype = Object.create(Mammal.prototype);
+        Person.prototype.constructor = Person;
+        Person.prototype.lie = function () {
+            console.log('你不帅');
+        }
+
+        var lsd = new Person('brown', 100);
+        var whh = new Person('brown', 80);
+        console.log('lsd:', lsd);
+        console.log('whh:', whh);
     </script>
 </body>
 
