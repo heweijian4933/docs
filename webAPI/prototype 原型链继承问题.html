@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <script>
+        function Animal() {
+
+        }
+        Animal.prototype.eat = () => {
+            console.log("i can eat");
+        }
+        Animal.prototype.sleep = () => {
+            console.log("i can sleep");
+        }
+
+        function Mamal() {
+
+        }
+
+        Mamal.prototype.glowHair = () => {
+            console.log("i can glow hair");
+        }
+
+        function Human() {
+
+        }
+        Human.prototype.speak = () => {
+            console.log("i can speak");
+        }
+
+        let lsd = new Human()
+        console.log(lsd);
+    </script>
+</body>
+
+</html>

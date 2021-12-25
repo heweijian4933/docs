@@ -43,10 +43,55 @@
         console.log(get_fullname === person.quanming); //true
         console.log("get_fullname()", get_fullname()); //window
 
+
+        function User({ name, age, gender }) {
+            this.name = name
+            this.age = age
+            this.gender = gender
+            console.log(this);
+        }
+
+        new User({ name: "王花花", age: 23, gender: 1 }); // User{}
+
+
         /* this 的指向与 this 所在的位置没有直接关系 */
         // 如果
 
+        for (let i = 0; i < 5; i++) {
+            console.log('i', i);
+            if (i > 2) {
+                break
+            }
+            for (let j = 0; j < 5; j++) {
+                console.log('j', j);
+                if (j > 2) {
+                    console.log("j》2", j);
+                    break;
+                }
 
+            }
+
+            console.log("--------");
+        }
+
+        function sort(arr) {
+            for (let i = 0; i < arr.length - 1; i++) {
+                for (let j = 0; j < arr.length - i - 1; j++) {
+                    if (arr[j] < arr[j + 1]) {
+                        // [arr[j], arr[j + 1]] = [arr[j + 1], arr[j]]
+                        let temp = arr[j]
+                        arr[j] = arr[j + 1]
+                        arr[j + 1] = temp
+                    }
+                    console.log(arr);
+                }
+                console.log("==========");
+            }
+            return arr
+        }
+
+        let arr = sort([323, 23, 1, 0.4, 38, 90, 388838])
+        console.log(arr);
     </script>
 </body>
 

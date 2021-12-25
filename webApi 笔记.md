@@ -69,6 +69,36 @@ this.disabled = true;
 // this 指向的是事件函数的调用者 btn
 ```
 
-> this 的指向问题
+> this 的指向问题： this 能够动态赋能赋值，对于简化代码有好处；但是也有很多人反感这种不确定性的问题。
 * 如果在方法内调用（方法也就是一个对象内的函数），那么 this 则指向调用的父级对象(ES5);ES6 出来了箭头函数以后，箭头函数的调用还是被修正,所以会指向最外面的域（window/undefiend），通常在 vue 里面是指向 vue实例化的全局对象。
-* 如果在函数内直接调用，
+* 如果在全局函数或者匿名函数内直接调用，那么会指向向最外面的域（window/undefiend）
+* 如果是在构造器当中调用，所谓构造器也就是生成对象的函数，那么会指向即将生成的对象
+
+
+
+> 函数break, continue,return 区别
+
+break 在 for 循环里面只是终止最近一层的循环；如果多层嵌套，外层的循环还会继续；
+
+continue 虽也是跳出循环，但是它义如其字，还是会继续下一次循环；用法是 continue 下面的代码就不再执行了。
+
+return 不仅用于终止循环，更常用的是用于函数体内返回值；
+
+
+
+Arguments 使用
+
+```
+function getMax(){ //array
+	let max = arguments[0]
+	for(let i=0;i<arguments.length;i++){
+		if(max < arguments[i]){
+			max = arguments[i]
+		}
+	}
+	return max
+}
+
+getMax([11,32,3,9,59]) // return 
+```
+
